@@ -75,7 +75,7 @@ export function BytecodePanel({ program, pc, faulted, counts, fold, emptyMessage
         </p>
       ) : (
         <ol
-          className="m-3 mb-0 max-h-[22rem] flex-1 overflow-auto rounded border border-edge bg-ink py-1 text-[12px] leading-6"
+          className="m-3 mb-0 max-h-[30rem] flex-1 overflow-auto rounded border border-edge bg-ink py-1 text-[12px] leading-6"
           onMouseLeave={() => onHover(null)}
         >
           {instrs.map((ins) => (

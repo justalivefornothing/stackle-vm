@@ -33,7 +33,7 @@ export const EXAMPLES: Example[] = [
   {
     name: 'fold me',
     source: '(2 + 3) * (10 - 4) / max(1, 2)',
-    blurb: 'Every leaf is a literal: toggle folding and watch 10 instructions become 2.',
+    blurb: 'Every leaf is a literal: toggle folding and watch 12 instructions become 2.',
   },
   {
     name: 'shadowing',

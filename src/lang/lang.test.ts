@@ -125,5 +125,10 @@ describe('trace', () => {
     expect(last.done).toBe(true)
     expect(last.error?.message).toBe("Unknown identifier 'x' at 1:5")
     expect(last.pc).toBe(2)
+    expect(last.stack).toEqual([1])
+
+    const div = [...trace(compile('10 / (5 - 5)'))].at(-1)!
+    expect(div.error?.message).toBe('Division by zero at 1:6')
+    expect(div.stack).toEqual([10, 0])
   })
 })

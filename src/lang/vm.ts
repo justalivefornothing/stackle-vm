@@ -195,19 +195,23 @@ export function execute(program: Program): number {
 /**
  * Debugger driver: yields a full state snapshot before the first instruction
  * and after every step. The final snapshot has `done: true` and either a
- * `result` or an `error` (runtime faults are captured, not thrown).
+ * `result` or an `error` (runtime faults are captured, not thrown); on a
+ * fault the stack and locals are those seen by the faulting instruction.
  */
 export function* trace(program: Program): Generator<Snapshot, void, void> {
   const vm = new VM(program)
-  yield vm.snapshot()
+  let before = vm.snapshot()
+  yield before
   while (!vm.halted) {
     try {
       vm.step()
     } catch (err) {
       if (!(err instanceof StackleError)) throw err
-      yield { ...vm.snapshot(), pc: vm.lastPc, done: true, error: err }
+      // Report the state as it was when the faulting instruction began, not half-popped.
+      yield { ...before, pc: vm.lastPc, done: true, error: err }
       return
     }
-    yield vm.snapshot()
+    before = vm.snapshot()
+    yield before
   }
 }

@@ -177,7 +177,7 @@ export default function App() {
         })}
       </nav>
 
-      <main className="grid grid-cols-1 gap-3 lg:grid-cols-3">
+      <main className="grid grid-cols-1 gap-3 lg:min-h-[68vh] lg:grid-cols-3">
         <SourcePanel source={source} onChange={setSource} onRun={dbg.run} highlight={highlight} status={status} />
         <BytecodePanel
           program={program}
