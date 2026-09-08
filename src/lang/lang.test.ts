@@ -66,14 +66,7 @@ describe('compiler and vm', () => {
   })
 
   it('emits ternary as JZ / JMP with correct targets', () => {
-    expect(compile('1 ? 2 : 3').disassemble()).toEqual([
-      'PUSH 1',
-      'JZ 0x000a',
-      'PUSH 2',
-      'JMP 0x000c',
-      'PUSH 3',
-      'RET',
-    ])
+    expect(compile('1 ? 2 : 3').disassemble()).toEqual(['PUSH 1', 'JZ 0x000a', 'PUSH 2', 'JMP 0x000c', 'PUSH 3', 'RET'])
     expect(run('0 ? 2 : 3')).toBe(3)
   })
 
