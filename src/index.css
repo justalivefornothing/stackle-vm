@@ -1,0 +1,32 @@
+@import 'tailwindcss';
+@import '@fontsource/vt323';
+@import '@fontsource-variable/martian-mono';
+
+@theme {
+  --font-mono: 'Martian Mono Variable', ui-monospace, 'Cascadia Mono', Consolas, monospace;
+  --font-pixel: 'VT323', 'Martian Mono Variable', monospace;
+  --color-ink: #101010;
+  --color-panel: #161616;
+  --color-edge: #262626;
+  --color-dim: #6f6f6f;
+  --color-mute: #9a9a9a;
+  --color-fg: #d8d8d8;
+  --color-phosphor: #39ff88;
+  --color-amber: #ffb347;
+  --color-ember: #ff6b6b;
+}
+
+html {
+  background: var(--color-ink);
+  color: var(--color-fg);
+  font-family: var(--font-mono);
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+}
+
+#root {
+  min-height: 100dvh;
+}
